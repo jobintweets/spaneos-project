@@ -1,0 +1,22 @@
+#addbtn{
+    float:right;
+    margin-right: 2px;
+}
+
+label.error{
+    color:red;
+    font-size: 10px;
+}
+<<<<<<< HEAD
+
+=======
+.editEmp{
+    color: darkblue;
+}
+.delEmp{
+    color: red;
+}
+>>>>>>> bec2107879c681a742192e2e502bbfb9a2631f17
+.dataTables_filter, .dataTables_info {
+    display: none;
+}

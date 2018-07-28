@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="js/viewall.js">
+        
+    </script>
+    <script src="js/storage.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+</head>
+
+<body>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Viewall</li>
+    </ol>
+    <div class="row mb-2">
+        <div class="col-sm mb-2">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary mb-1 mt-1" data-toggle="modal" data-target="#exampleModal" id="addbtn">
+  Add Employee
+</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New Employee</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addempform" name="addempform">
+                        <div class="form-row">
+                            <div class="col">
+                                <label>Empno:</label>
+                                <input type="text" class="form-control required" id="empno" name="empno" placeholder="Employee number">
+                            </div>
+                            
+                            <div class="col">
+                                <label>Name:</label>
+                                <input type="text" class="form-control required" name="name" id="name" placeholder="Full name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label>Mobile:</label>
+                                <input type="text" class="form-control required" id="mobile" name="mobile" placeholder="Mobile Number">
+                            </div>
+                            <div class="col">
+                                <label>Email:</label>
+                                <input type="text" class="form-control required" id="email" placeholder="Email address" name="email">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label>Qualification:</label>
+                                <select id="qualification" class="form-control required" name="qualification">
+                                 <option selected value="">Select Qualification...</option>
+                                 <option value="P.hd">P.hd</option>
+                                 <option value="M.Tech">M.Tech</option>
+                                    <option value="B.Tech">B.Tech</option>
+                                </select>
+                                
+                            </div>
+                            <div class="col">
+                                <label>Designation:</label>
+                                <select id="designation" class="form-control required" name="designation">
+                                 <option selected value="">Select Designation...</option>
+                                 <option value="HOD">HOD</option>
+                                 <option value="Faculty">Faculty</option>
+                                    <option value="Lab-facilitator">Lab-Facilitator</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="col">
+                                <label>Department:</label>
+                                <select id="dept" class="form-control required" name="dept">
+                                 <option selected value="">Select Department...</option>
+                                 <option value="ISE">ISE</option>
+                                 <option value="CSE">CSE</option>
+                                    <option value="ECE">ECE</option>
+                                    <option value="CIVIL">CIVIL</option>
+                <option value="MECH">MECH</option>
+                                </select>
+                            </div>
+                             <div class="col">
+                                <label>Salary:</label>
+                                 <input type="number" class="form-control required" id="salary" name="salary" placeholder="Employee salary">
+                            </div>
+                            
+                        
+                        </div>
+                        
+                         </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btnclose" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btnaddemployee">Add  Employee</button>
+                    <button type="button" class="btn btn-primary updateemployee" style="display:none">Update Employee</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="row mt-1 mb-4 no-gutters">
+        <div class="col-md-1"></div>
+        <div class="col-md-6 display-block">
+            <input type="text" class="form-control" id='searchtxt' placeholder="Enter text to search" />
+        </div>
+        <div class="col-md-2 ml-1">
+            <select type="text" class="form-control dropdown" id="dropdown" name="dropdown">
+                <option value="">Select Department</option>
+                <option value="ISE">ISE</option>
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="CIVIL">CIVIL</option>
+                <option value="MECH">MECH</option>
+                </select>
+        </div>
+        <div class="col-md-2 ml-1">
+            <button type="button" class="btn btn-primary" id="btnSearch">Search</button>
+        </div>
+    </div>
+    
+    <div id="showcontent"></div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+</body>
+</html>
+
+ 
